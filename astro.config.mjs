@@ -63,7 +63,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     preview: {
-      allowedHosts: ['healthcheck.railway.app'],
+      allowedHosts: true, // Allow all hosts for Railway deployment
     },
   },
   integrations: [
