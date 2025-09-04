@@ -1,0 +1,83 @@
+---
+title: 'Guía Completa: Instalar n8n Localmente y Configurar Wasapi'
+description: 'Aprende a instalar n8n en tu máquina local, configurarlo y usar el paquete de nodos de Wasapi para automatizar WhatsApp'
+published: 2024-12-19
+tags: ['n8n', 'wasapi', 'whatsapp', 'automatización', 'nodejs', 'tutorial']
+series: 'Automatización con n8n'
+---
+
+import MacScreenMock from '~/components/MacScreenMock.astro'
+
+# Guía Rápida: n8n + Wasapi
+
+Instala n8n localmente y configura el paquete de nodos de Wasapi para automatizar WhatsApp en pocos pasos.
+
+## ¿Qué es n8n?
+
+n8n es una plataforma de automatización visual que te permite conectar servicios y crear workflows sin código.
+
+## Instalación Rápida
+
+### 1. Instalar n8n
+
+```bash
+npm install n8n -g
+n8n --version
+```
+
+<MacScreenMock 
+  title="Terminal" 
+  url="~" 
+  type="terminal"
+/>
+
+### 2. Ejecutar n8n
+
+```bash
+n8n
+```
+
+Accede a: `http://localhost:5678`
+
+<MacScreenMock 
+  title="n8n - Workflow Automation" 
+  url="localhost:5678" 
+  type="browser"
+/>
+
+## Instalar Paquete de Wasapi
+
+### 3. Instalar Nodos de Wasapi
+
+```bash
+npm install @laiyon/n8n-nodes-wasapi
+```
+
+Reinicia n8n para que reconozca los nuevos nodos.
+
+### 4. Crear Workflow Básico
+
+1. **Manual Trigger** → **Wasapi Send Message**
+2. Configura credenciales de Wasapi
+3. Ejecuta el workflow
+
+<MacScreenMock 
+  title="n8n Workflow Editor" 
+  url="localhost:5678/workflow" 
+  type="n8n"
+/>
+
+## Configuración Wasapi
+
+- **API Key**: Tu clave de Wasapi
+- **Base URL**: URL de tu instancia
+- **To**: Número destino
+- **Message**: Contenido del mensaje
+
+## Recursos
+
+- [Paquete npm](https://www.npmjs.com/package/@laiyon/n8n-nodes-wasapi)
+- [Documentación n8n](https://docs.n8n.io/)
+- [Wasapi SDK](https://github.com/juanalvarezpro/wasapi-sdk)
+
+¡Listo! Ya tienes n8n funcionando con Wasapi para automatizar WhatsApp.
