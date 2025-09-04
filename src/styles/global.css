@@ -610,3 +610,45 @@ article img {
     @apply border-accent cursor-pointer;
   }
 }
+
+/* Wasapi link styling */
+.wasapi-link {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.95em;
+  background: linear-gradient(135deg, 
+    color-mix(in oklab, var(--theme-accent) 60%, var(--theme-foreground)) 0%, 
+    color-mix(in oklab, var(--theme-accent) 80%, var(--theme-foreground)) 50%, 
+    color-mix(in oklab, var(--theme-accent) 60%, var(--theme-foreground)) 100%);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 3s ease-in-out infinite;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.wasapi-link:hover {
+  animation-duration: 1.5s;
+  transform: scale(1.05);
+  text-decoration: none;
+}
+
+.wasapi-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    color-mix(in oklab, var(--theme-accent) 60%, var(--theme-foreground)) 0%, 
+    color-mix(in oklab, var(--theme-accent) 80%, var(--theme-foreground)) 100%);
+  transition: width 0.3s ease;
+}
+
+.wasapi-link:hover::after {
+  width: 100%;
+}

@@ -50,35 +50,3 @@ const { avatarImage, githubCalendar } = Astro.props
   {githubCalendar && <GitHubActivityCalendar username={githubCalendar} />}
 </div>
 
-<style>
-  .contact-badge {
-    background: linear-gradient(135deg, 
-      color-mix(in oklab, var(--theme-accent) 20%, var(--theme-background)) 0%, 
-      color-mix(in oklab, var(--theme-accent) 40%, var(--theme-background)) 50%, 
-      color-mix(in oklab, var(--theme-accent) 20%, var(--theme-background)) 100%);
-    background-size: 200% 200%;
-    animation: gradientShift 4s ease-in-out infinite;
-    backdrop-filter: blur(8px);
-  }
-  
-  @keyframes gradientShift {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-  
-  /* Hover effect with more accent color */
-  .contact-badge:hover {
-    background: linear-gradient(135deg, 
-      color-mix(in oklab, var(--theme-accent) 30%, var(--theme-background)) 0%, 
-      color-mix(in oklab, var(--theme-accent) 50%, var(--theme-background)) 50%, 
-      color-mix(in oklab, var(--theme-accent) 30%, var(--theme-background)) 100%);
-    animation-duration: 2s;
-  }
-</style>
