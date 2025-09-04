@@ -89,10 +89,10 @@ const config: SiteConfig = {
   // IMPORTANT: Update giscus.json in the root of the project with your own website URL
   // If you don't want to use Giscus, set this to undefined.
   giscus: {
-    repo: 'juanalvarezPro/mysiteweb', // Tu repositorio actual
-    repoId: '[TU-REPO-ID]', // Obtén este ID de giscus.app
-    category: 'Comments', // O el nombre que prefieras
-    categoryId: '[TU-CATEGORY-ID]', // Obtén este ID de giscus.app
+    repo: 'juanalvarezPro/my-site-web', // Tu repositorio actual
+    repoId: 'R_kgDOPqC6-g', // Obtén este ID de giscus.app
+    category: 'General', // O el nombre que prefieras
+    categoryId: 'DIC_kwDOPqC6-s4Cu-uP', // Obtén este ID de giscus.app
     reactionsEnabled: true, // Enable reactions on post itself
   },
   // These are characters available for the character chat feature.
