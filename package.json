@@ -3,12 +3,15 @@
   "description": "A terminal-inspired coding blog built with Astro.",
   "type": "module",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "postbuild": "pagefind --site dist",
     "preview": "astro preview",
-    "start": "astro preview --host 0.0.0.0 --port $PORT",
+1    "start": "astro preview --host 0.0.0.0 --port $PORT",
     "astro": "astro",
     "format": "prettier --write ."
   },
