@@ -63,12 +63,11 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     preview: {
-      allowedHosts: [
-        'healthcheck.railway.app',
-        'juanalvarez.pro',
-        '*.railway.app'
-      ],
+      allowedHosts: ['juanalvarez.pro'],
     },
+  },
+  server: {
+    host: '0.0.0.0',
   },
   integrations: [
     sitemap(),
