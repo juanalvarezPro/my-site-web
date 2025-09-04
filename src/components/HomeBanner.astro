@@ -16,15 +16,29 @@ const { avatarImage, githubCalendar } = Astro.props
   >
     {
       avatarImage && (
-        <Image
-          priority
-          src={avatarImage.src}
-          alt={avatarImage.alt}
-          class="rounded-full border-8 border-accent/15 size-36 aspect-square box-content shrink-0"
-          widths={[288]}
-          height={144}
-          width={144}
-        />
+        <div class="relative flex-shrink-0">
+          <Image
+            priority
+            src={avatarImage.src}
+            alt={avatarImage.alt}
+            class="rounded-full border-8 border-accent/15 size-36 aspect-square box-content"
+            widths={[288]}
+            height={144}
+            width={144}
+          />
+          {/* Contact Me Badge centrado en la parte inferior */}
+          <div class="absolute bottom-5 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-10">
+            <a 
+              href="#contact" 
+              class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-foreground rounded-full shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg border border-accent/20 bg-background/95 backdrop-blur-sm"
+            >
+              <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+              Contáctame
+            </a>
+          </div>
+        </div>
       )
     }
     <div>
@@ -35,3 +49,36 @@ const { avatarImage, githubCalendar } = Astro.props
   </div>
   {githubCalendar && <GitHubActivityCalendar username={githubCalendar} />}
 </div>
+
+<style>
+  .contact-badge {
+    background: linear-gradient(135deg, 
+      color-mix(in oklab, var(--theme-accent) 20%, var(--theme-background)) 0%, 
+      color-mix(in oklab, var(--theme-accent) 40%, var(--theme-background)) 50%, 
+      color-mix(in oklab, var(--theme-accent) 20%, var(--theme-background)) 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease-in-out infinite;
+    backdrop-filter: blur(8px);
+  }
+  
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* Hover effect with more accent color */
+  .contact-badge:hover {
+    background: linear-gradient(135deg, 
+      color-mix(in oklab, var(--theme-accent) 30%, var(--theme-background)) 0%, 
+      color-mix(in oklab, var(--theme-accent) 50%, var(--theme-background)) 50%, 
+      color-mix(in oklab, var(--theme-accent) 30%, var(--theme-background)) 100%);
+    animation-duration: 2s;
+  }
+</style>
