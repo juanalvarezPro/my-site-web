@@ -62,12 +62,12 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
-    preview: {
-      allowedHosts: ['juanalvarez.pro'],
-    },
   },
   server: {
-    host: '0.0.0.0',
+    allowedHosts: ['juanalvarez.pro'],
+  },
+  preview: {
+    allowedHosts: ['juanalvarez.pro'],
   },
   integrations: [
     sitemap(),
