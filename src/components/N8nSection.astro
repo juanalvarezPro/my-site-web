@@ -1,0 +1,54 @@
+---
+import { getSortedPosts } from '~/utils'
+import PostPreview from '~/components/PostPreview.astro'
+import BlockHeader from '~/components/BlockHeader.astro'
+
+// Filtrar posts relacionados con n8n
+const allPosts = await getSortedPosts()
+const n8nPosts = allPosts.filter(post => 
+  post.data.tags && post.data.tags.some(tag => 
+    tag.toLowerCase().includes('n8n') || 
+    tag.toLowerCase().includes('automatización') ||
+    tag.toLowerCase().includes('workflow')
+  )
+)
+
+// También incluir posts de la serie 'Automatización con n8n'
+const seriesPosts = allPosts.filter(post => 
+  post.data.series && post.data.series.toLowerCase().includes('n8n')
+)
+
+// Combinar y eliminar duplicados, tomar solo los 3 más recientes
+const recentN8nPosts = [...new Set([...n8nPosts, ...seriesPosts])]
+  .sort((a, b) => new Date(b.data.published).getTime() - new Date(a.data.published).getTime())
+  .slice(0, 3)
+---
+
+{recentN8nPosts.length > 0 && (
+  <section>
+    <BlockHeader>Publicaciones de n8n</BlockHeader>
+    <div class="prose max-w-none mb-6">
+      <p class="text-foreground/80">
+        Tutoriales y guías sobre automatización con n8n y integración con Wasapi.
+      </p>
+    </div>
+    
+    <div class="space-y-6">
+      {recentN8nPosts.map((post) => (
+        <PostPreview post={post} />
+      ))}
+    </div>
+    
+    <div class="mt-8 text-center">
+      <a 
+        href="/n8n" 
+        class="inline-flex items-center px-4 py-2 bg-accent/10 text-accent border border-accent/20 rounded-lg hover:bg-accent/20 transition-colors duration-200"
+      >
+        Ver todas las publicaciones de n8n
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+)}

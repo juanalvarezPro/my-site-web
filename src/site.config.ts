@@ -41,6 +41,10 @@ const config: SiteConfig = {
       url: '/posts',
     },
     {
+      name: 'n8n',
+      url: '/n8n',
+    },
+    {
       name: 'GitHub', 
       url: 'https://github.com/juanalvarezpro',
       external: true,
