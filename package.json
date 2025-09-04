@@ -11,7 +11,7 @@
     "build": "astro build",
     "postbuild": "pagefind --site dist",
     "preview": "astro preview",
-    "start": "node ./dist/server/entry.mjs",
+    "start": "astro preview --host 0.0.0.0 --port ${PORT:-4321}",
     "astro": "astro",
     "format": "prettier --write ."
   },
