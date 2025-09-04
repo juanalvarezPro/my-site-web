@@ -1,0 +1,134 @@
+---
+import Layout from '~/layouts/Layout.astro'
+import { getSortedPosts } from '~/utils'
+import PostPreview from '~/components/PostPreview.astro'
+import BlockHeader from '~/components/BlockHeader.astro'
+
+// Filtrar posts relacionados con n8n
+const allPosts = await getSortedPosts()
+const n8nPosts = allPosts.filter(post => 
+  post.data.tags && post.data.tags.some(tag => 
+    tag.toLowerCase().includes('n8n') || 
+    tag.toLowerCase().includes('automatización') ||
+    tag.toLowerCase().includes('workflow')
+  )
+)
+
+// También incluir posts de la serie 'Automatización con n8n'
+const seriesPosts = allPosts.filter(post => 
+  post.data.series && post.data.series.toLowerCase().includes('n8n')
+)
+
+// Combinar y eliminar duplicados
+const allN8nPosts = [...new Set([...n8nPosts, ...seriesPosts])]
+  .sort((a, b) => new Date(b.data.published).getTime() - new Date(a.data.published).getTime())
+---
+
+<Layout>
+  <section class="my-8">
+    <BlockHeader>Publicaciones de n8n</BlockHeader>
+    <div class="max-w-none">
+      <p class="text-lg text-foreground/80 mb-6">
+        Explora todos mis artículos y tutoriales sobre <strong class="font-semibold text-foreground">n8n</strong>, la plataforma de automatización de flujos de trabajo. 
+        Aquí encontrarás guías paso a paso, integraciones con Wasapi, y consejos para automatizar tus procesos.
+      </p>
+    </div>
+  </section>
+
+  {allN8nPosts.length > 0 ? (
+    <section>
+      <div class="mb-6">
+        <h2 class="text-2xl font-semibold text-foreground mb-2">
+          Artículos Disponibles ({allN8nPosts.length})
+        </h2>
+        <p class="text-foreground/70">
+          Tutoriales, guías y casos de uso para dominar n8n
+        </p>
+      </div>
+      
+      <div class="space-y-6">
+        {allN8nPosts.map((post) => (
+          <PostPreview post={post} />
+        ))}
+      </div>
+    </section>
+  ) : (
+    <section>
+      <div class="text-center py-12">
+        <div class="text-6xl mb-4">🔧</div>
+        <h2 class="text-2xl font-semibold text-foreground mb-2">
+          Próximamente más contenido de n8n
+        </h2>
+        <p class="text-foreground/70 mb-6">
+          Estoy preparando más tutoriales y guías sobre n8n y automatización.
+        </p>
+        <a 
+          href="/posts" 
+          class="inline-flex items-center px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent/80 transition-colors"
+        >
+          Ver todos los posts
+        </a>
+      </div>
+    </section>
+  )}
+
+  <section class="my-12">
+    <div class="bg-foreground/5 rounded-xl p-8 border border-accent/10">
+      <h2 class="text-2xl font-semibold text-foreground mb-4">
+        ¿Qué es n8n?
+      </h2>
+      <div class="max-w-none text-foreground/80">
+        <p class="mb-4">
+          <strong class="font-semibold text-foreground">n8n</strong> es una plataforma de automatización de flujos de trabajo de código abierto que te permite:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Conectar diferentes servicios y APIs de manera visual</li>
+          <li>Automatizar tareas repetitivas sin escribir código</li>
+          <li>Crear workflows complejos con una interfaz intuitiva</li>
+          <li>Integrar con más de 200 servicios populares</li>
+          <li>Desarrollar nodos personalizados para necesidades específicas</li>
+        </ul>
+        <p class="mt-4">
+          En mis artículos te muestro cómo aprovechar al máximo n8n, especialmente para automatizar WhatsApp con Wasapi.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="my-12">
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-gradient-to-br from-accent/10 to-accent/5 rounded-xl p-6 border border-accent/20">
+        <h3 class="text-xl font-semibold text-foreground mb-3">
+          🚀 Comenzar con n8n
+        </h3>
+        <p class="text-foreground/70 mb-4">
+          Si eres nuevo en n8n, te recomiendo empezar con la guía de instalación local.
+        </p>
+        <a 
+          href="/posts/instalar-n8n-wasapi-local" 
+          class="inline-flex items-center text-accent hover:text-accent/80 font-medium underline"
+        >
+          Ver guía de instalación →
+        </a>
+      </div>
+      
+      <div class="bg-gradient-to-br from-green-500/10 to-green-500/5 rounded-xl p-6 border border-green-500/20">
+        <h3 class="text-xl font-semibold text-foreground mb-3">
+          📱 Automatizar WhatsApp
+        </h3>
+        <p class="text-foreground/70 mb-4">
+          Aprende a integrar n8n con Wasapi para automatizar mensajes de WhatsApp.
+        </p>
+        <a 
+          href="https://www.npmjs.com/package/@laiyon/n8n-nodes-wasapi" 
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center text-green-600 hover:text-green-700 font-medium underline"
+        >
+          Ver paquete en npm →
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
