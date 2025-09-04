@@ -1,0 +1,294 @@
+---
+interface Props {
+  title?: string
+  url?: string
+  content?: string
+  type?: 'terminal' | 'browser' | 'code' | 'n8n'
+}
+
+const { 
+  title = "Terminal", 
+  url = "localhost:5678", 
+  content = "n8n workflow",
+  type = "terminal"
+} = Astro.props
+
+const getContent = () => {
+  switch (type) {
+    case 'terminal':
+      return `
+        $ npm install n8n -g
+        $ n8n --version
+        n8n@1.0.0
+        $ n8n
+        n8n ready on 0.0.0.0, port 5678
+        Version: 1.0.0
+        Mode: production
+      `
+    case 'browser':
+      return `
+        n8n - Workflow Automation
+        ┌─────────────────────────────────────┐
+        │  Welcome to n8n                    │
+        │  Create your first workflow        │
+        │                                     │
+        │  [Create Workflow] [Browse Templates]│
+        │                                     │
+        │  Recent Workflows:                 │
+        │  • Wasapi Integration              │
+        │  • WhatsApp Automation             │
+        └─────────────────────────────────────┘
+      `
+    case 'code':
+      return `
+        // n8n workflow configuration
+        {
+          "nodes": [
+            {
+              "name": "Manual Trigger",
+              "type": "n8n-nodes-base.manualTrigger"
+            },
+            {
+              "name": "Wasapi Send Message",
+              "type": "@laiyon/n8n-nodes-wasapi.wasapiSendMessage"
+            }
+          ]
+        }
+      `
+    case 'n8n':
+      return `
+        ┌─────────────────────────────────────┐
+        │  n8n Workflow Editor               │
+        │                                     │
+        │  [Manual] ──→ [Wasapi Send]        │
+        │  Trigger        Message             │
+        │                                     │
+        │  Properties:                        │
+        │  • To: +1234567890                 │
+        │  • Message: Hello from n8n!        │
+        │  • Type: text                      │
+        └─────────────────────────────────────┘
+      `
+    default:
+      return content
+  }
+}
+---
+
+<div class="mac-mock">
+  <div class="mac-screen">
+    <!-- Mac Screen Frame -->
+    <div class="mac-frame">
+      <!-- Mac Screen Header -->
+      <div class="mac-header">
+        <div class="mac-controls">
+          <div class="mac-control close"></div>
+          <div class="mac-control minimize"></div>
+          <div class="mac-control maximize"></div>
+        </div>
+        <div class="mac-title">
+          {title}
+        </div>
+        <div class="mac-url">
+          {url}
+        </div>
+      </div>
+      
+      <!-- Mac Screen Content -->
+      <div class="mac-content">
+        <pre class="mac-text">{getContent()}</pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .mac-mock {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+    perspective: 1000px;
+  }
+
+  .mac-screen {
+    transform: rotateX(5deg) rotateY(-5deg);
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+  }
+
+  .mac-screen:hover {
+    transform: rotateX(0deg) rotateY(0deg) scale(1.02);
+  }
+
+  .mac-frame {
+    background: linear-gradient(145deg, #2c2c2e, #1c1c1e);
+    border-radius: 20px 20px 8px 8px;
+    padding: 8px;
+    box-shadow: 
+      0 25px 50px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    min-width: 600px;
+    min-height: 400px;
+  }
+
+  .mac-frame::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+    border-radius: 22px 22px 10px 10px;
+    z-index: -1;
+    opacity: 0.7;
+    filter: blur(8px);
+  }
+
+  .mac-header {
+    background: linear-gradient(180deg, #f5f5f7, #e8e8ed);
+    border-radius: 12px 12px 0 0;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  .mac-controls {
+    display: flex;
+    gap: 8px;
+  }
+
+  .mac-control {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: relative;
+  }
+
+  .mac-control.close {
+    background: #ff5f57;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .mac-control.minimize {
+    background: #ffbd2e;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .mac-control.maximize {
+    background: #28ca42;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .mac-title {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1d1d1f;
+    flex: 1;
+  }
+
+  .mac-url {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 12px;
+    color: #6e6e73;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .mac-content {
+    background: #1e1e1e;
+    border-radius: 0 0 12px 12px;
+    padding: 20px;
+    min-height: 300px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mac-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  }
+
+  .mac-text {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #d4d4d4;
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Terminal specific styles */
+  .mac-text:has-text("$") {
+    color: #4ecdc4;
+  }
+
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .mac-frame {
+      min-width: 90vw;
+      min-height: 300px;
+    }
+    
+    .mac-text {
+      font-size: 11px;
+    }
+    
+    .mac-screen {
+      transform: none;
+    }
+    
+    .mac-screen:hover {
+      transform: scale(1.01);
+    }
+  }
+
+  /* Animation for content */
+  .mac-text {
+    animation: typewriter 2s ease-in-out;
+  }
+
+  @keyframes typewriter {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Glow effect */
+  .mac-frame::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px 20px 8px 8px;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .mac-screen:hover .mac-frame::after {
+    opacity: 1;
+  }
+</style>
