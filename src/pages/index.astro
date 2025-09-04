@@ -10,6 +10,7 @@ import siteConfig from '~/site.config'
 import TagsSection from '~/components/TagsSection.astro'
 import SeriesSection from '~/components/SeriesSection.astro'
 import ProjectsSection from '~/components/ProjectsSection.astro'
+import N8nSection from '~/components/N8nSection.astro'
 
 const home = await getCollection('home')
 let HomeContent
@@ -45,7 +46,7 @@ const postsHaveSeries = sortedPosts.some((post) => post.data.series)
   {
     postsHaveSeries && (
       <section>
-        <BlockHeader>Series</BlockHeader>
+        <BlockHeader> 📚 Mis Series</BlockHeader>
         <SeriesSection posts={sortedPosts} />
       </section>
     )
@@ -53,7 +54,7 @@ const postsHaveSeries = sortedPosts.some((post) => post.data.series)
   {
     postsHaveTags && (
       <section>
-        <BlockHeader>Tags</BlockHeader>
+        <BlockHeader> 📝 Tags</BlockHeader>
         <TagsSection posts={sortedPosts} />
       </section>
     )
@@ -61,7 +62,7 @@ const postsHaveSeries = sortedPosts.some((post) => post.data.series)
   {
     sortedPosts.length > 0 && (
       <section>
-        <BlockHeader>Latest Posts</BlockHeader>
+        <BlockHeader> 📝 Ultimos Posts</BlockHeader>
         {sortedPosts
           .reverse()
           .slice(0, Math.floor(siteConfig.pageSize / 2))
