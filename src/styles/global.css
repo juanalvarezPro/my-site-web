@@ -617,9 +617,11 @@ article img {
   font-weight: 700;
   font-size: 0.95em;
   background: linear-gradient(135deg, 
-    color-mix(in oklab, var(--theme-accent) 60%, var(--theme-foreground)) 0%, 
-    color-mix(in oklab, var(--theme-accent) 80%, var(--theme-foreground)) 50%, 
-    color-mix(in oklab, var(--theme-accent) 60%, var(--theme-foreground)) 100%);
+    #00ff88 0%, 
+    #00d4aa 25%, 
+    #00ff88 50%, 
+    #00d4aa 75%, 
+    #00ff88 100%);
   background-size: 200% 200%;
   background-clip: text;
   -webkit-background-clip: text;
@@ -628,12 +630,15 @@ article img {
   text-decoration: none;
   transition: all 0.3s ease;
   position: relative;
+  filter: drop-shadow(0 0 8px rgba(0, 255, 136, 0.4));
 }
+
 
 .wasapi-link:hover {
   animation-duration: 1.5s;
   transform: scale(1.05);
   text-decoration: none;
+  filter: drop-shadow(0 0 12px rgba(0, 255, 136, 0.8));
 }
 
 .wasapi-link::after {
@@ -644,8 +649,8 @@ article img {
   width: 0;
   height: 2px;
   background: linear-gradient(90deg, 
-    color-mix(in oklab, var(--theme-accent) 60%, var(--theme-foreground)) 0%, 
-    color-mix(in oklab, var(--theme-accent) 80%, var(--theme-foreground)) 100%);
+    #00ff88 0%, 
+    #00d4aa 100%);
   transition: width 0.3s ease;
 }
 
