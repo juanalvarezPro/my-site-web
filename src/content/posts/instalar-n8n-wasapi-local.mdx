@@ -13,7 +13,7 @@ import MacScreenMock from '~/components/MacScreenMock.astro'
 
 # Guía Rápida: n8n + Wasapi
 
-Instala n8n localmente y configura el paquete de nodos de Wasapi para automatizar WhatsApp en pocos pasos.
+Instala n8n localmente y configura el paquete npm de Wasapi para automatizar WhatsApp en pocos pasos.
 
 ## ¿Qué es n8n?
 
@@ -52,10 +52,8 @@ Accede a: `http://localhost:5678`
 
 ### 4. Instalar Wasapi en N8n
 
-ve a a seccion ajustes de comunidad de nodes e instala el paquete de Wasapi
-la url es http://localhost:5678/settings/community-nodes
+Ve a **Ajustes → Nodos de la comunidad** ([http://localhost:5678/settings/community-nodes](http://localhost:5678/settings/community-nodes)) e instala el paquete de **Wasapi**.
 
-copia el paquete aqui
 ```
 @laiyon/n8n-nodes-wasapi@latest
 ```
@@ -69,16 +67,28 @@ copia el paquete aqui
 
 ### 5. Credenciales de Wasapi
 
-1. Crea una credencial de Wasapi 
-2. Ingresa la API Key de Wasapi en n8n
-la url es http://localhost:5678/home/credentials
+1. Crea una nueva **API Key** en tu cuenta de Wasapi:  
+   👉 [https://app.wasapi.io/account/developer](https://app.wasapi.io/account/developer)
+
+2. En **n8n**, ve a la sección de **Credenciales**:  
+   👉 [http://localhost:5678/home/credentials](http://localhost:5678/home/credentials)
+
 
 <MacScreenMock 
   title="" 
   url="home/credentials" 
   showImage={true}
   imageAlt="Credenciales de Wasapi"  
-  imageUrl="/credencialwasapi.webp" 
+  imageUrl="/addNewCredential.webp" 
+/>
+3. Agrega la **API Key de Wasapi** que creaste en el paso anterior.
+
+<MacScreenMock 
+  title="" 
+  url="home/credentials" 
+  showImage={true}
+  imageAlt="Credenciales de Wasapi"  
+  imageUrl="/credencialInput.webp" 
 />
 
 ## Recursos
