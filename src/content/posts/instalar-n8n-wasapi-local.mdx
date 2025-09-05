@@ -1,11 +1,14 @@
 ---
 title: 'Guía Completa: Instalar n8n Localmente y Configurar Wasapi'
 description: 'Aprende a instalar n8n en tu máquina local, configurarlo y usar el paquete de nodos de Wasapi para automatizar WhatsApp'
-published: 2024-12-19
+published: 2025-09-04
 tags: ['n8n', 'wasapi', 'whatsapp', 'automatización', 'nodejs', 'tutorial']
 series: 'Automatización con n8n'
 ---
 
+import TerminalMock from '~/components/mac-mock/TerminalMock.astro'
+import BrowserMock from '~/components/mac-mock/BrowserMock.astro'
+import N8nMock from '~/components/mac-mock/N8nMock.astro'
 import MacScreenMock from '~/components/MacScreenMock.astro'
 
 # Guía Rápida: n8n + Wasapi
@@ -25,11 +28,7 @@ npm install n8n -g
 n8n --version
 ```
 
-<MacScreenMock 
-  title="Terminal" 
-  url="~" 
-  type="terminal"
-/>
+<TerminalMock />
 
 ### 2. Ejecutar n8n
 
@@ -39,40 +38,48 @@ n8n
 
 Accede a: `http://localhost:5678`
 
+<BrowserMock />
+
+### 3. Iniciar sesion en n8n
+
 <MacScreenMock 
-  title="n8n - Workflow Automation" 
+  title="Iniciar sesion en n8n" 
   url="localhost:5678" 
-  type="browser"
+  showImage={true}
+  imageAlt="Iniciar sesion en n8n"  
+  imageUrl="/loginn8n.webp" 
 />
 
-## Instalar Paquete de Wasapi
+### 4. Instalar Wasapi en N8n
 
-### 3. Instalar Nodos de Wasapi
+ve a a seccion ajustes de comunidad de nodes e instala el paquete de Wasapi
+la url es http://localhost:5678/settings/community-nodes
 
-```bash
-npm install @laiyon/n8n-nodes-wasapi
+copia el paquete aqui
 ```
+@laiyon/n8n-nodes-wasapi@latest
+```
+<MacScreenMock 
+  title="" 
+  url="settings/community-nodes" 
+  showImage={true}
+  imageAlt="Instalar Wasapi en N8n"  
+  imageUrl="/wasapinode.webp" 
+/>
 
-Reinicia n8n para que reconozca los nuevos nodos.
+### 5. Credenciales de Wasapi
 
-### 4. Crear Workflow Básico
-
-1. **Manual Trigger** → **Wasapi Send Message**
-2. Configura credenciales de Wasapi
-3. Ejecuta el workflow
+1. Crea una credencial de Wasapi 
+2. Ingresa la API Key de Wasapi en n8n
+la url es http://localhost:5678/home/credentials
 
 <MacScreenMock 
-  title="n8n Workflow Editor" 
-  url="localhost:5678/workflow" 
-  type="n8n"
+  title="" 
+  url="home/credentials" 
+  showImage={true}
+  imageAlt="Credenciales de Wasapi"  
+  imageUrl="/credencialwasapi.webp" 
 />
-
-## Configuración Wasapi
-
-- **API Key**: Tu clave de Wasapi
-- **Base URL**: URL de tu instancia
-- **To**: Número destino
-- **Message**: Contenido del mensaje
 
 ## Recursos
 
