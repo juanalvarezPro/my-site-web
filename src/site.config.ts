@@ -98,16 +98,16 @@ const config: SiteConfig = {
     category: 'General', // O el nombre que prefieras
     categoryId: 'DIC_kwDOPqC6-s4Cu-uP', // Obtén este ID de giscus.app
     reactionsEnabled: true, // Enable reactions on post itself
-  },
+  }
   // These are characters available for the character chat feature.
   // To add your own character, add an image file to the top-level `/public` directory
   // Make sure to compress the image to a web-friendly size (<100kb)
   // Try using the excellent https://squoosh.app web app for creating small webp files
-  characters: {
+ /* characters: {
     owl: '/owl.webp',
     unicorn: '/unicorn.webp',
     duck: '/duck.webp',
-  },
+  },*/
 }
 
 export default config
