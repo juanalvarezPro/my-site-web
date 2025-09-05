@@ -300,4 +300,60 @@ const shouldShowImage = showImage && imageUrl
   .mac-screen:hover .mac-frame::after {
     opacity: 1;
   }
+
+  /* Dark theme adjustments */
+  :root[data-theme="slack-dark"] .mac-frame {
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+    box-shadow: 
+      0 30px 60px rgba(0, 0, 0, 0.6),
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+  }
+
+  :root[data-theme="slack-dark"] .mac-content {
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+  }
+
+  :root[data-theme="slack-dark"] .mac-text {
+    color: #f0f0f0;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  }
+
+  :root[data-theme="slack-dark"] .mac-text:has-text("$") {
+    color: #00ff88;
+  }
+
+  :root[data-theme="slack-dark"] .mac-frame::before {
+    opacity: 0.9;
+    filter: blur(15px);
+  }
+
+  /* Light theme adjustments */
+  :root[data-theme="slack-ochin"] .mac-frame {
+    background: linear-gradient(145deg, #f8f8f8, #e8e8e8);
+    box-shadow: 
+      0 30px 60px rgba(0, 0, 0, 0.2),
+      0 0 0 1px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  :root[data-theme="slack-ochin"] .mac-content {
+    background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
+  }
+
+  :root[data-theme="slack-ochin"] .mac-text {
+    color: #2a2a2a;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  }
+
+  :root[data-theme="slack-ochin"] .mac-text:has-text("$") {
+    color: #0066cc;
+  }
+
+  :root[data-theme="slack-ochin"] .mac-header {
+    background: linear-gradient(180deg, #ffffff, #f0f0f0);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
 </style>
