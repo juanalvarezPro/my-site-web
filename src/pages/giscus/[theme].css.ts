@@ -140,6 +140,41 @@ input::placeholder {
   color: ${muted(foreground, 80)} !important;
 }
 
+/* Asegurar que el texto sea visible en todos los temas */
+.gsc-comment-content,
+.gsc-comment-body,
+.gsc-comment-text,
+.gsc-comment-header,
+.gsc-comment-author,
+.gsc-comment-time,
+.gsc-comment-box,
+.gsc-comment-box textarea,
+.gsc-comment-box input {
+  color: ${foreground} !important;
+  background-color: ${background} !important;
+}
+
+/* Mejorar la visibilidad de los botones */
+.gsc-comment-box button,
+.gsc-comment-box .btn {
+  color: ${background} !important;
+  background-color: ${accent} !important;
+  border: 1px solid ${accent} !important;
+}
+
+/* Mejorar la visibilidad de los enlaces */
+.gsc-comment-content a,
+.gsc-comment-body a {
+  color: ${link} !important;
+}
+
+/* Asegurar que el fondo sea visible */
+.gsc-comments,
+.gsc-comment-box,
+.gsc-timeline {
+  background-color: ${background} !important;
+}
+
 .gsc-reactions-count {
   display: none;
 }

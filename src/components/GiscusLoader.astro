@@ -110,44 +110,63 @@ const reactionsEnabled = giscusConfig.reactionsEnabled ? '1' : '0'
 </script>
 
 <style is:global>
-  iframe.giscus-frame {
-    margin-block: 32px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  }
-
-  /* Estilos para el contenedor de Giscus */
+  /* Contenedor principal de Giscus */
   .giscus {
-    background: color-mix(in oklab, var(--theme-background) 95%, var(--theme-foreground));
+    background: var(--theme-background);
     border-radius: 12px;
     padding: 24px;
+    color: black;
     border: 1px solid color-mix(in oklab, var(--theme-foreground) 15%, var(--theme-background));
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     margin-block: 32px;
   }
 
+  /* Iframe de Giscus */
+  iframe.giscus-frame {
+    margin-block: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--theme-background);
+    border: none;
+    width: 100%;
+    min-height: 400px;
+  }
+
   /* Mejoras específicas para tema claro */
   :root[data-theme="slack-ochin"] .giscus {
-    background: color-mix(in oklab, var(--theme-background) 98%, var(--theme-foreground));
-    border: 1px solid color-mix(in oklab, var(--theme-foreground) 20%, var(--theme-background));
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  }
+
+  :root[data-theme="slack-ochin"] iframe.giscus-frame {
+    background: #ffffff;
   }
 
   /* Mejoras específicas para tema oscuro */
   :root[data-theme="slack-dark"] .giscus {
-    background: color-mix(in oklab, var(--theme-background) 90%, var(--theme-foreground));
-    border: 1px solid color-mix(in oklab, var(--theme-foreground) 25%, var(--theme-background));
+    background: #1a1a1a;
+    border: 1px solid #374151;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
   }
 
-  /* Asegurar que el iframe de Giscus tenga el fondo correcto */
-  iframe.giscus-frame {
-    background: transparent;
+  :root[data-theme="slack-dark"] iframe.giscus-frame {
+    background: #1a1a1a;
   }
 
-  /* Mejoras para el texto dentro de Giscus */
+  /* Asegurar que el contenido de Giscus sea visible */
+  .giscus * {
+    color: var(--theme-foreground) !important;
+  }
+
+  /* Estilos para mejorar la visibilidad del texto */
   .giscus iframe {
-    border-radius: 8px;
+    color-scheme: light dark;
+  }
+
+  /* Forzar estilos en el iframe cuando sea posible */
+  iframe.giscus-frame {
+    filter: none;
+    opacity: 1;
   }
 </style>
