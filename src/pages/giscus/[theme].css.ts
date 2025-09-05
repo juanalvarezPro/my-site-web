@@ -199,8 +199,20 @@ export async function GET(context: APIContext) {
     headers: {
       'Access-Control-Allow-Origin': 'https://giscus.app',
       'Access-Control-Allow-Methods': 'GET OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
       'Cache-Control': 'public, max-age=31536000, immutable',
       'Content-Type': 'text/css',
+    },
+  })
+}
+
+export async function OPTIONS() {
+  return new Response(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': 'https://giscus.app',
+      'Access-Control-Allow-Methods': 'GET OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
     },
   })
 }
