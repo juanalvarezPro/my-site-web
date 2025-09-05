@@ -97,6 +97,12 @@ const shouldShowImage = showImage && imageUrl
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
+  @media (max-width: 768px) {
+    .mac-frame {
+      width: 100%;
+    }
+  }
+
   .mac-frame::before {
     content: '';
     position: absolute;
