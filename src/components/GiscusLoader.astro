@@ -13,15 +13,20 @@ const categoryId = giscusConfig.categoryId
 const reactionsEnabled = giscusConfig.reactionsEnabled ? '1' : '0'
 ---
 
-<div
-  class="giscus"
-  data-origin={origin}
-  data-repo={repo}
-  data-repo-id={repoId}
-  data-category={category}
-  data-category-id={categoryId}
-  data-reactions-enabled={reactionsEnabled}
->
+<div class="giscus-container">
+  <div
+    class="giscus"
+    data-origin={origin}
+    data-repo={repo}
+    data-repo-id={repoId}
+    data-category={category}
+    data-category-id={categoryId}
+    data-reactions-enabled={reactionsEnabled}
+  >
+  </div>
+  <div class="giscus-info">
+    <p>💡 Para comentar, necesitas autorizar Giscus con tu cuenta de GitHub. Haz clic en "Sign in" cuando aparezca.</p>
+  </div>
 </div>
 <script>
   function loadGiscus() {
@@ -57,11 +62,10 @@ const reactionsEnabled = giscusConfig.reactionsEnabled ? '1' : '0'
     script.setAttribute('data-strict', '0')
     script.setAttribute('data-reactions-enabled', reactionsEnabled)
     script.setAttribute('data-emit-metadata', '0')
-    // Setting this to 'bottom' doesn't work. Not sure why.
     script.setAttribute('data-input-position', 'top')
     script.setAttribute('data-theme', `${origin}/giscus/${theme}.css`)
-    script.setAttribute('data-lang', 'en')
-    script.setAttribute('loading', 'lazy')
+    script.setAttribute('data-lang', 'es')
+    script.setAttribute('data-loading', 'lazy')
     script.crossOrigin = 'anonymous'
     script.async = true
     document.body.appendChild(script)
@@ -112,5 +116,27 @@ const reactionsEnabled = giscusConfig.reactionsEnabled ? '1' : '0'
 <style is:global>
   iframe.giscus-frame {
     margin-block: 32px;
+  }
+  
+  .giscus-container {
+    background: color-mix(in oklab, var(--theme-background) 95%, var(--theme-foreground));
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid color-mix(in oklab, var(--theme-foreground) 10%, transparent);
+  }
+  
+  .giscus-info {
+    margin-top: 16px;
+    padding: 12px;
+    background: color-mix(in oklab, var(--theme-accent) 10%, var(--theme-background));
+    border-radius: 8px;
+    border-left: 4px solid var(--theme-accent);
+  }
+  
+  .giscus-info p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--theme-foreground);
+    opacity: 0.8;
   }
 </style>
