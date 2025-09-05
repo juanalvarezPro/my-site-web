@@ -1,0 +1,25 @@
+---
+import MacScreenMock from '../MacScreenMock.astro'
+
+interface Props {
+  title?: string
+  url?: string
+  imageUrl: string
+  imageAlt?: string
+}
+
+const { 
+  title = "Screenshot", 
+  url = "localhost:3000",
+  imageUrl,
+  imageAlt = "Screenshot"
+} = Astro.props
+---
+
+<MacScreenMock 
+  title={title}
+  url={url}
+  imageUrl={imageUrl}
+  imageAlt={imageAlt}
+  showImage={true}
+/>

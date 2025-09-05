@@ -3,76 +3,22 @@ interface Props {
   title?: string
   url?: string
   content?: string
-  type?: 'terminal' | 'browser' | 'code' | 'n8n'
+  imageUrl?: string
+  imageAlt?: string
+  showImage?: boolean
 }
 
 const { 
   title = "Terminal", 
   url = "localhost:5678", 
   content = "n8n workflow",
-  type = "terminal"
+  imageUrl,
+  imageAlt = "Screenshot",
+  showImage = false
 } = Astro.props
 
-const getContent = () => {
-  switch (type) {
-    case 'terminal':
-      return `
-        $ npm install n8n -g
-        $ n8n --version
-        n8n@1.0.0
-        $ n8n
-        n8n ready on 0.0.0.0, port 5678
-        Version: 1.0.0
-        Mode: production
-      `
-    case 'browser':
-      return `
-        n8n - Workflow Automation
-        ┌─────────────────────────────────────┐
-        │  Welcome to n8n                    │
-        │  Create your first workflow        │
-        │                                     │
-        │  [Create Workflow] [Browse Templates]│
-        │                                     │
-        │  Recent Workflows:                 │
-        │  • Wasapi Integration              │
-        │  • WhatsApp Automation             │
-        └─────────────────────────────────────┘
-      `
-    case 'code':
-      return `
-        // n8n workflow configuration
-        {
-          "nodes": [
-            {
-              "name": "Manual Trigger",
-              "type": "n8n-nodes-base.manualTrigger"
-            },
-            {
-              "name": "Wasapi Send Message",
-              "type": "@laiyon/n8n-nodes-wasapi.wasapiSendMessage"
-            }
-          ]
-        }
-      `
-    case 'n8n':
-      return `
-        ┌─────────────────────────────────────┐
-        │  n8n Workflow Editor               │
-        │                                     │
-        │  [Manual] ──→ [Wasapi Send]        │
-        │  Trigger        Message             │
-        │                                     │
-        │  Properties:                        │
-        │  • To: +1234567890                 │
-        │  • Message: Hello from n8n!        │
-        │  • Type: text                      │
-        └─────────────────────────────────────┘
-      `
-    default:
-      return content
-  }
-}
+// Determinar si mostrar imagen o texto
+const shouldShowImage = showImage && imageUrl
 ---
 
 <div class="mac-mock">
@@ -96,7 +42,15 @@ const getContent = () => {
       
       <!-- Mac Screen Content -->
       <div class="mac-content">
-        <pre class="mac-text">{getContent()}</pre>
+        {showImage && imageUrl ? (
+          <img 
+            src={imageUrl} 
+            alt={imageAlt}
+            class="mac-image"
+          />
+        ) : (
+          <pre class="mac-text">{content}</pre>
+        )}
       </div>
     </div>
   </div>
@@ -117,45 +71,58 @@ const getContent = () => {
   }
 
   .mac-screen:hover {
-    transform: rotateX(0deg) rotateY(0deg) scale(1.02);
+    transform: rotateX(0deg) rotateY(0deg) scale(1.05);
+  }
+
+  .mac-screen:hover .mac-frame {
+    box-shadow: 
+      0 40px 80px rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(255, 255, 255, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.3);
   }
 
   .mac-frame {
     background: linear-gradient(145deg, #2c2c2e, #1c1c1e);
     border-radius: 20px 20px 8px 8px;
-    padding: 8px;
     box-shadow: 
-      0 25px 50px rgba(0, 0, 0, 0.3),
-      0 0 0 1px rgba(255, 255, 255, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      0 30px 60px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2);
     position: relative;
-    min-width: 600px;
-    min-height: 400px;
+    padding: 12px;
+    width: 420px;
+    height: 320px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .mac-frame::before {
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
-    border-radius: 22px 22px 10px 10px;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff6b6b);
+    border-radius: 23px 23px 11px 11px;
     z-index: -1;
-    opacity: 0.7;
-    filter: blur(8px);
+    opacity: 0.8;
+    filter: blur(12px);
+    animation: glow 3s ease-in-out infinite alternate;
   }
 
   .mac-header {
     background: linear-gradient(180deg, #f5f5f7, #e8e8ed);
     border-radius: 12px 12px 0 0;
+    height: 50px;
     padding: 12px 16px;
     display: flex;
     align-items: center;
     gap: 12px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     position: relative;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
 
   .mac-controls {
@@ -178,6 +145,17 @@ const getContent = () => {
   .mac-control.minimize {
     background: #ffbd2e;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  .mac-content .mac-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    object-fit: cover;
+    scale: 1.5;
+    border-radius: 0 0 12px 12px;
+    animation: fadeIn 1s ease-in-out;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
   }
 
   .mac-control.maximize {
@@ -204,12 +182,14 @@ const getContent = () => {
   }
 
   .mac-content {
-    background: #1e1e1e;
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
     border-radius: 0 0 12px 12px;
-    padding: 20px;
-    min-height: 300px;
+    height: 250px;
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .mac-content::before {
@@ -226,16 +206,23 @@ const getContent = () => {
     font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
     font-size: 13px;
     line-height: 1.6;
-    color: #d4d4d4;
+    color: #e8e8e8;
     margin: 0;
     white-space: pre-wrap;
     word-wrap: break-word;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
   }
 
   /* Terminal specific styles */
   .mac-text:has-text("$") {
-    color: #4ecdc4;
+    color: #00d4aa;
   }
 
   /* Responsive design */
@@ -271,6 +258,28 @@ const getContent = () => {
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes glow {
+    from {
+      opacity: 0.6;
+      filter: blur(12px);
+    }
+    to {
+      opacity: 0.9;
+      filter: blur(8px);
     }
   }
 

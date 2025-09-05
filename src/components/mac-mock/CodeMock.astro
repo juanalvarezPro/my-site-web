@@ -1,0 +1,33 @@
+---
+import MacScreenMock from '../MacScreenMock.astro'
+
+interface Props {
+  title?: string
+  url?: string
+  code?: string
+}
+
+const { 
+  title = "Code Editor", 
+  url = "config.json",
+  code = `// n8n workflow configuration
+{
+  "nodes": [
+    {
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger"
+    },
+    {
+      "name": "Wasapi Send Message",
+      "type": "@laiyon/n8n-nodes-wasapi.wasapiSendMessage"
+    }
+  ]
+}`
+} = Astro.props
+---
+
+<MacScreenMock 
+  title={title}
+  url={url}
+  content={code}
+/>

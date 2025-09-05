@@ -1,0 +1,31 @@
+---
+import MacScreenMock from '../MacScreenMock.astro'
+
+interface Props {
+  title?: string
+  url?: string
+  workflow?: string
+}
+
+const { 
+  title = "n8n Workflow Editor", 
+  url = "localhost:5678/workflow",
+  workflow = `┌─────────────────────────────────────┐
+│  n8n Workflow Editor               │
+│                                     │
+│  [Manual] ──→ [Wasapi Send]        │
+│  Trigger        Message             │
+│                                     │
+│  Properties:                        │
+│  • To: +1234567890                 │
+│  • Message: Hello from n8n!        │
+│  • Type: text                      │
+└─────────────────────────────────────┘`
+} = Astro.props
+---
+
+<MacScreenMock 
+  title={title}
+  url={url}
+  content={workflow}
+/>

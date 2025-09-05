@@ -1,0 +1,26 @@
+---
+import MacScreenMock from '../MacScreenMock.astro'
+
+interface Props {
+  title?: string
+  url?: string
+  commands?: string
+}
+
+const { 
+  title = "Terminal", 
+  url = "~",
+  commands = `$ npm install n8n -g
+$ n8n --version
+n8n@1.108.1
+$ n8n
+Initializing n8n process
+n8n ready on ::, port 5678`
+} = Astro.props
+---
+
+<MacScreenMock 
+  title={title}
+  url={url}
+  content={commands}
+/>

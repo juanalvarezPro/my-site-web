@@ -1,0 +1,31 @@
+---
+import MacScreenMock from '../MacScreenMock.astro'
+
+interface Props {
+  title?: string
+  url?: string
+  content?: string
+}
+
+const { 
+  title = "Browser", 
+  url = "localhost:3000",
+  content = `n8n - Workflow Automation
+┌─────────────────────────────────────┐
+│  Welcome to n8n                    │
+│  Create your first workflow        │
+│                                     │
+│  [Create Workflow] [Browse Templates]│
+│                                     │
+│  Recent Workflows:                 │
+│  • Wasapi Integration              │
+│  • WhatsApp Automation             │
+└─────────────────────────────────────┘`
+} = Astro.props
+---
+
+<MacScreenMock 
+  title={title}
+  url={url}
+  content={content}
+/>
