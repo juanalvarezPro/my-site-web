@@ -15,12 +15,16 @@ import siteConfig from '~/site.config'
         Transformo ideas en soluciones digitales que conectan el mundo físico con el digital.
       </p>
       
-      <div class="flex flex-col sm:flex-row gap-4 justify-around">
+      <div class="flex flex-col sm:flex-row gap-4 justify-start items-start">
         <a 
           href={siteConfig.socialLinks.email} 
-          class="inline-flex items-center px-6 py-3 text-lg font-semibold text-background bg-accent hover:bg-accent/90 rounded-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+          class="inline-flex items-center gap-2 px-3 py-3 text-base font-semibold text-white bg-gradient-to-r from-accent to-accent/80 hover:from-accent/90 hover:to-accent/70 rounded-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-accent/25 border border-accent/50 hover:border-accent/80 relative group overflow-hidden"
         >
-          📧 Hablemos
+          <span class="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          <svg class="w-5 h-5 transition-transform group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          <span class="relative">¡Trabajemos juntos!</span>
         </a>
         
         <div class="flex gap-3">
