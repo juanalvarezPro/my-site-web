@@ -5,6 +5,12 @@ avatarImage:
 githubCalendar: 'juanalvarezPro'
 ---
 
-Hola, soy **Milo**. Desarrollador full-stack y un gran apasionado por la **robótica** y la música. Me motiva crear soluciones innovadoras, compartir conocimiento y conectar con personas.
+Hola, soy **Milo** 👋
 
-<a href="https://wasapi.io" target="_blank" rel="noopener noreferrer" class="wasapi-link">Trabajando en Wasapi...</a>
+**Developer Full-Stack** especializado en conectar el mundo físico con el digital.
+
+**IoT & Robótica** • ⚡ **Automatización** •  **Maker**
+
+<div class="mt-4 text-xs opacity-75">
+Actualmente creando soluciones en <strong>Wasapi...</strong>
+</div>

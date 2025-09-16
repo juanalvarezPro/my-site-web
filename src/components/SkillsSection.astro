@@ -1,0 +1,16 @@
+---
+const skills = [
+  'React', 'TypeScript', 'Node.js', 'Laravel', 'PostgreSQL', 'Arduino', 'ESP32', 'n8n', 'Docker', 'Git'
+]
+
+---
+
+<div class="w-full mt-2">
+  <div class="flex flex-wrap gap-2 justify-center max-w-4xl mx-auto">
+    {skills.map((skill) => (
+      <span class="px-3 py-1.5 text-sm bg-foreground/10 text-foreground/80 rounded-full">
+        {skill}
+      </span>
+    ))}
+  </div>
+</div>

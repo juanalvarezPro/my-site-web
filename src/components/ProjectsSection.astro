@@ -29,19 +29,19 @@ const projects: Project[] = [
     type: 'npm'
   },
   {
-    name: 'Bigbot',
-    description: 'Plataforma Robotica y libreria infantil con control remoto',
+    name: 'BigBot Platform',
+    description: 'Plataforma robótica educativa con control remoto vía Bluetooth. Sistema completo de hardware y software para aprendizaje STEAM.',
     url: 'https://bigbot.bigtronica.tech/',
     github: 'https://github.com/BigtronicaSAS/BigBot',
-    tech: ['C++', 'Arduino', 'Bluetooth', 'ESP32'],
+    tech: ['C++', 'Arduino', 'Bluetooth', 'ESP32', 'React'],
     type: 'web'
   },
   {
-    name: 'Churchsaas',
-    description: 'Plataforma de gestion de iglesias y ministerios en Panama',
+    name: 'ChurchSaaS',
+    description: 'SaaS completo para gestión de iglesias y ministerios. Dashboard administrativo, gestión de miembros y reportes avanzados.',
     url: 'https://github.com/juanalvarezPro/ipul-saas',
     github: 'https://github.com/juanalvarezPro/ipul-saas',
-    tech: ['Laravel', 'Filament', 'PostgreSQL'],
+    tech: ['Laravel', 'Filament', 'PostgreSQL', 'Livewire'],
     type: 'web'
   }
 ]
@@ -50,7 +50,7 @@ const projects: Project[] = [
 <div class="w-full mt-2">
   <div class="grid gap-6 md:grid-cols-2">
     {projects.map((project) => (
-      <div class="p-6 rounded-lg border border-accent/10 bg-background/50 hover:border-accent/20 transition-all duration-200 hover:shadow-lg group">
+      <div class="glass-effect hover-glow p-6 rounded-xl border border-accent/20 group">
         <div class="flex items-start justify-between mb-3">
           <h3 class="text-lg font-semibold text-foreground group-hover:text-accent transition-colors">
             {project.name}
@@ -100,18 +100,24 @@ const projects: Project[] = [
             href={project.url} 
             target="_blank" 
             rel="noopener noreferrer"
-            class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-accent hover:text-accent/80 border border-accent/20 hover:border-accent/40 rounded-md transition-colors duration-200"
+            class="group relative inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 rounded-lg transition-all duration-300 shadow-lg hover:shadow-blue-500/25 hover:scale-105"
           >
-            Ver proyecto
+            <span>Ver proyecto</span>
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
           </a>
           {project.type === 'npm' && project.npm && (
             <a 
               href={project.npm} 
               target="_blank" 
               rel="noopener noreferrer"
-              class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-red-500 hover:text-red-600 border border-red-500/20 hover:border-red-500/40 rounded-md transition-colors duration-200"
+              class="group relative inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 rounded-lg transition-all duration-300 shadow-lg hover:shadow-red-500/25 hover:scale-105"
             >
-              npm
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0H1.763zm.944 2.17h19.586v19.66H2.707V2.17zm1.45 1.45v16.76h16.686V3.62H4.157zm1.45 1.45h13.786v13.86H5.607V5.07zm1.45 1.45v10.96h10.886V6.52H7.057zm1.45 1.45h7.986v8.06H8.507V7.97zm1.45 1.45v5.16h5.086V9.42H9.957zm1.45 1.45h2.186v2.26H11.407v-2.26z"/>
+              </svg>
+              <span>npm</span>
             </a>
           )}
         </div>
