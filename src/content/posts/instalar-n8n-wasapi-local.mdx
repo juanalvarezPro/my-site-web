@@ -30,6 +30,14 @@ n8n --version
 
 <TerminalMock />
 
+:::important
+  Si tienes problemas para instalar n8n usa Sudo para instalar n8n, puedes usar el siguiente comando:
+```bash
+sudo npm install n8n -g
+n8n --version
+```
+:::
+
 ### 2. Ejecutar n8n
 
 ```bash
@@ -52,7 +60,7 @@ Accede a: `http://localhost:5678`
 
 ### 4. Instalar Wasapi en N8n
 
-Ve a **Ajustes → Nodos de la comunidad** ([http://localhost:5678/settings/community-nodes](http://localhost:5678/settings/community-nodes)) e instala el paquete de **Wasapi**.
+Ve a **Ajustes → Nodos de la comunidad** ([settings/community-nodes](http://localhost:5678/settings/community-nodes)) e instala el paquete de **Wasapi**.
 
 ```
 @wasapi/n8n-nodes-wasapi@latest
@@ -68,7 +76,7 @@ Ve a **Ajustes → Nodos de la comunidad** ([http://localhost:5678/settings/comm
 ### 5. Credenciales de Wasapi
 
 1. Crea una nueva **API Key** en tu cuenta de Wasapi:  
-   👉 [https://app.wasapi.io/account/developer](https://app.wasapi.io/account/developer)
+   👉 [Crear API Key en Wasapi](https://app.wasapi.io/account/developer)
 
 :::important
 En la documentación oficial de Wasapi encontrarás una guía detallada para crear una API Key: [Ver documentación](https://ayuda.wasapi.io/es/articles/8843315-uso-de-la-api-de-wasapi)
@@ -83,7 +91,7 @@ En la documentación oficial de Wasapi encontrarás una guía detallada para cre
 />
 
 2. En **n8n**, ve a la sección de **Credenciales**:  
-   👉 [http://localhost:5678/home/credentials](http://localhost:5678/home/credentials)
+   👉 [/home/credentials](http://localhost:5678/home/credentials)
 
 
 <MacScreenMock 
@@ -105,9 +113,9 @@ En la documentación oficial de Wasapi encontrarás una guía detallada para cre
 
 ## Recursos
 
-- [Paquete npm](https://www.npmjs.com/package/@laiyon/n8n-nodes-wasapi)
+- [Paquete npm](https://www.npmjs.com/package/@wasapi/n8n-nodes-wasapi)
 - [Documentación n8n](https://docs.n8n.io/)
-- [Wasapi SDK](https://github.com/juanalvarezpro/wasapi-sdk)
-- [Documentación Wasapi](https://ayuda.wasapi.io/es/articles/8843315-uso-de-la-api-de-wasapi)
+- [Wasapi SDK](https://github.com/Vinix-Code-Dev/wasapi-js-sdk)
+- [Documentación Wasapi N8N](https://ayuda.wasapi.io/es/articles/12292661-integracion-con-n8n)
 
 ¡Listo! Ya tienes n8n funcionando con Wasapi para automatizar WhatsApp.
