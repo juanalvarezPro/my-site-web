@@ -11,7 +11,6 @@ import TagsSection from '~/components/TagsSection.astro'
 import SeriesSection from '~/components/SeriesSection.astro'
 import ProjectsSection from '~/components/ProjectsSection.astro'
 import SkillsSection from '~/components/SkillsSection.astro'
-import ContactSection from '~/components/ContactSection.astro'
 import N8nSection from '~/components/N8nSection.astro'
 
 const home = await getCollection('home')
@@ -41,7 +40,6 @@ const postsHaveSeries = sortedPosts.some((post) => post.data.series)
       </HomeBanner>
     )
   }
-  <ContactSection />
   <section>
     <BlockHeader>🚀 Proyectos</BlockHeader>
     <ProjectsSection />

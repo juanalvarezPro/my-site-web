@@ -28,7 +28,6 @@ Soy Juan Álvarez (Milo), desarrollador full-stack con más de **5 años** crean
 
 **Automatización**
 - Especialista en n8n (nodos oficiales de Wasapi)
-- Zapier, webhooks, workflow automation
 - Integración de sistemas complejos
 
 ### 🚀 Experiencia Profesional
@@ -43,7 +42,6 @@ Soy Juan Álvarez (Milo), desarrollador full-stack con más de **5 años** crean
 - **BigBot Platform**: Sistema robótico educativo completo
 - **ChurchSaaS**: Plataforma SaaS para gestión organizacional
 - **IoT Dashboards**: Sistemas de monitoreo en tiempo real
-- **Music Tech**: Interfaces MIDI para control musical
 
 ### 🎯 Lo que me Define
 
@@ -62,7 +60,7 @@ La música ha sido mi compañera desde los 10 años. Esta pasión me ha enseñad
 
 ### 📈 Impacto Actual
 
-- **+1950** contribuciones en GitHub en el último año
+- **+2000** contribuciones en GitHub en el último año
 - **Miles de desarrolladores** usando mis paquetes npm
 - **Comunidad n8n**: Contribuyendo con nodos oficiales
 - **Mentoring**: Ayudando a otros developers en automatización e IoT
